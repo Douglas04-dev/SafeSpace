@@ -1,0 +1,13 @@
+.oi{
+   
+    justify-content: center;
+    display: flex;
+    padding: 12px;
+    margin: 12px;
+}
+
+.ola{
+    width: 21px;
+    align-items: center;
+    justify-content: center;
+}
