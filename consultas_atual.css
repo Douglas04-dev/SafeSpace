@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: linear-gradient(135deg, #0F0F0F, #1b9276b2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: transparent;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+/* Navbar */
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.li a {
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: #2CE3B7B2;
+}
+
+.li a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2CE3B7B2;
+    transition: width 0.3s ease;
+}
+
+.li a:hover::after {
+    width: 100%;
+}
+
+.links a:hover {
+    border-bottom: 2px solid #2CE3B7B2;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #2CE3B7B2;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1b9276b2;
+}
+
+.btn.highlight {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(44, 227, 183, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(44, 227, 183, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(44, 227, 183, 0); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+
+header {
+    position: relative;
+    padding-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+header .content h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+header .content h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 3.5rem;
+}
+
+.blur {
+    position: absolute;
+    box-shadow: 0 0 1000px 50px #2CE3B7B2;
+    z-index: -100;
+}
+
+/* Features Section */
+section .header {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.features .card {
+    background-color: #2CE3B7B2;
+    padding: 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.features .card:hover {
+    background-color: #1b9276b2;
+    box-shadow: 0 10px 20px rgba(44, 227, 183, 0.3);
+    transform: translateY(-5px) scale(1.02);
+}
+
+.features .card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.features .card p {
+    margin-bottom: 1rem;
+}
+
+.features .card a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.features .card a:hover {
+    color: #1e40af;
+}
+
+/* Footer */
+footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: transparent;
+    margin-top: 3rem;
+    position: relative;
+}
+
+footer .log {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+footer .column p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+footer .so {
+    display: flex;
+    gap: 1rem;
+}
+
+footer .so a {
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 1.25rem;
+    border-radius: 100%;
+    transition: all 0.3s ease;
+}
+
+footer .so a:hover {
+    background-color: #2CE3B7B2;
+    border-color: #2CE3B7B2;
+    color: #fff;
+}
+
+footer .col h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+footer .col a {
+    display: block;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .col a:hover {
+    color: #2CE3B7B2;
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade extra */
+@media (max-width: 768px) {
+    .features {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #2CE3B7B2;
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #0f0f0f;
+    border: 1px solid #2CE3B7B2;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    min-width: 150px;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown a:hover {
+    background-color: #2CE3B7B2;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.profile-card {
+    background-color: #2CE3B7B2;
+    padding: 1rem;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card:hover {
+    background-color: #1b9276b2;
+    transform: scale(1.03);
+}
+
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #fff;
+}
+
+.profile-card h4 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.profile-card p {
+    font-size: 0.95rem;
+    color: #e1e1e1;
+}
+
+.btn{
+    margin: 10px;
+}
