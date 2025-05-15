@@ -65,6 +65,17 @@ CREATE TABLE `profissionais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+CREATE TABLE `fotos_perfil` (
+  `idFoto` INT NOT NULL AUTO_INCREMENT,
+  `idDono` INT NOT NULL,
+  `tipo_dono` ENUM('usuario', 'profissional') NOT NULL,
+  `caminho_arquivo` VARCHAR(255) NOT NULL,
+  `data_upload` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idFoto`)
+);
+
+
 --
 -- Dump completed on [DATA ATUAL]
 */
