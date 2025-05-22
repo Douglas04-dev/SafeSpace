@@ -75,6 +75,16 @@ CREATE TABLE `fotos_perfil` (
   PRIMARY KEY (`idFoto`)
 );
 
+CREATE TABLE bio_profissional (
+  idBio INT NOT NULL AUTO_INCREMENT,
+  idProfissional INT NOT NULL,
+  texto TEXT DEFAULT NULL,         
+  PRIMARY KEY (idBio),
+  UNIQUE KEY unique_profissional (idProfissional),
+  CONSTRAINT fk_bio_profissional FOREIGN KEY (idProfissional) REFERENCES profissionais(idProfissional) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 --
 -- Dump completed on [DATA ATUAL]
