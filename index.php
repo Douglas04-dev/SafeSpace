@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="consultas_atual.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
-    <title>SaveSpace v.1.0</title>
+    <title>SaveSpace</title>
     <link rel="shortcut icon    " href="Imagens/logo3.png">
 </head>
 <body>
@@ -35,17 +36,121 @@
 
         </a>
     </nav>
-
  
-    <footer class="container">
+   
+    <header id="cta" class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+          
+            <h1>Seja Bem-vindo(a) ao SafeSpace!</h1>
+            <p>
+            
+Aqui você encontrará um ambiente seguro, acolhedor e feito especialmente para te ajudar no desenvolvimento pessoal. Nosso compromisso é oferecer todo o suporte necessário para que você se sinta confiante e preparado(a) para enfrentar os desafios da timidez.
+            </p>
+         
+
+        </div>
+        <div class="imagem">
+            <img src="Imagens/logo3.png">
+        </div>
+
+    </header>
+
+   <section id="tu" class="container">
+    <h2 class="header">Profissionais</h2>
+    <div class="features">
+        
+        <div class="profile-card">
+            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
+            <h4>Maria Silva</h4>
+            <p>Psicóloga</p>
+            <button class="btn">Pesquisar</button>
+        </div>
+        <div class="profile-card">
+            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
+            <h4>João Souza</h4>
+            <p>Terapeuta Comportamental</p>
+              <button class="btn">Pesquisar</button>
+        </div>
+        <div class="profile-card">
+            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
+            <h4>Letícia Moraes</h4>
+            <p>Pedagoga</p>
+        <button class="btn">Pesquisar</button>            
+        </div>
+        <div class="profile-card">
+            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
+            <h4>Lucas Lima</h4>
+            <p>Coach Educacional</p>
+            <button class="btn">Pesquisar</button>
+        </div>
+        
+    </div>
+</section>
+
+    <section id="tu" class="container">
+        <h2 class="header">Outros Fatores</h2>
+        <div class="features">
+            <div class="card">
+                <h4>Tutoriais</h4>
+                <p>
+                   
+                    Explore nossos tutoriais detalhados para obter orientações passo a passo sobre como utilizar todos os recursos da plataforma.
+
+                </p>
+
+                <a href="#">Clique</a>
+                
+            </div>
+            <div class="card">
+                <h4>Bugs</h4>
+                <p>
+                    Encontre uma seção dedicada para relatar e monitorar qualquer problema técnico ou falha que possa ter encontrado.
+                </p>
+
+                </p>
+
+                <a href="#">Clique</a>
+                
+            </div>
+
+            <div class="card">
+                <h4>FAQs</h4>
+                <p>
+                    Consulte nossas perguntas frequentes para encontrar respostas rápidas para as dúvidas mais comuns.
+                </p>
+
+                </p>
+
+                <a href="#">Clique</a>
+                
+            </div>
+            
+            <div class="card">
+                <h4>Atualizações</h4>
+                <p>
+                    Fique por dentro das atualizações mais recentes da plataforma e das novas funcionalidades adicionadas.
+
+                </p>
+
+                <a href="#">Clique</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer id="con" class="container">
         <span class="blur"> </span>
         <span class="blur"> </span>
             <div class="column">
                 <div class="log">
                     <img src="Imagens/logo3.png" alt="">
                     <p>
-                        Nós somos fofos.
-                    </p>
+                 
+                    
+
+                        </p>
                      <div class="so">
                         <a href="#"><i  class="ri-youtube-line"></i></a>
                          <a href="#"><i class="ri-instagram-line"></i></a>
@@ -57,16 +162,16 @@
             <div class="col">
                 <h4>Company</h4>
                 <a href="#">Busines</a>
-                <a href="#">Contatos</a>
+                <a href="#">Patrocínios</a>
                 <a href="#">Network</a>
 
             </div>
 
             <div class="col">
                 <h4>Sobre Nós</h4>
-                <a href="#">Nosso contato</a>
-                <a href="#">Politica Privacidade</a>
-                <a href="#">Termos & Condições</a>
+                <a href="#">Blogs</a>
+                <a href="#">Canal</a>
+                <a href="#">Portfólio</a>
 
             </div>
             <div class="col">
@@ -77,6 +182,12 @@
 
             </div>
     </footer>
-</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
 <script src="script.js"></script>
+<script src="movimentacao.js"></script>
+
+</body>
+
 </html>

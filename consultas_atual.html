@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="consultas_atual.css">
+    <link rel="stylesheet" href="consultass.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
-    <title>SaveSpace v.1.0</title>
+    <title>SaveSpace</title>
     <link rel="shortcut icon    " href="Imagens/logo3.png">
 </head>
 <body>
@@ -33,76 +33,55 @@
         </a>
     </nav>
 <section class="container">
-    <h2 class="header">Profissionais</h2>
-    <div class="features">
-        
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Maria Silva</h4>
-            <p>Psicóloga</p>
-            <button class="btn">Pesquisar</button>
+        <h2>Minhas Consultas</h2>
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Profissional</th>
+                        <th>Especialidade</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Maria Silva</td>
+                        <td>Psicóloga</td>
+                        <td>25/06/2025</td>
+                        <td>14:00</td>
+                        <td><span class="status agendado">Agendado</span></td>
+                        <td>
+                            <button class="btn cancelar">Cancelar</button>
+                            <button class="btn detalhes">Detalhes</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>João Souza</td>
+                        <td>Terapeuta</td>
+                        <td>30/06/2025</td>
+                        <td>16:00</td>
+                        <td><span class="status concluido">Concluído</span></td>
+                        <td>
+                            <button class="btn detalhes">Detalhes</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Letícia Moraes</td>
+                        <td>Pedagoga</td>
+                        <td>05/07/2025</td>
+                        <td>10:00</td>
+                        <td><span class="status cancelado">Cancelado</span></td>
+                        <td>
+                            <button class="btn detalhes">Detalhes</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>João Souza</h4>
-            <p>Terapeuta Comportamental</p>
-              <button class="btn">Pesquisar</button>
-        </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Letícia Moraes</h4>
-            <p>Pedagoga</p>
-        <button class="btn">Pesquisar</button>            
-        </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Lucas Lima</h4>
-            <p>Coach Educacional</p>
-            <button class="btn">Pesquisar</button>
-        </div>
-        
-    </div>
-</section>
-    <footer class="container">
-        <span class="blur"> </span>
-        <span class="blur"> </span>
-            <div class="column">
-                <div class="log">
-                    <img src="Imagens/logo3.png" alt="">
-                    <p>
-                        Nós somos fofos.
-                    </p>
-                     <div class="so">
-                        <a href="#"><i  class="ri-youtube-line"></i></a>
-                         <a href="#"><i class="ri-instagram-line"></i></a>
-                        <a href="#"><i class="ri-whatsapp-line"></i></a>
-                     </div>
-                </div>
-            
-            </div>
-            <div class="col">
-                <h4>Company</h4>
-                <a href="#">Busines</a>
-                <a href="#">Contatos</a>
-                <a href="#">Network</a>
-
-            </div>
-
-            <div class="col">
-                <h4>Sobre Nós</h4>
-                <a href="#">Nosso contato</a>
-                <a href="#">Politica Privacidade</a>
-                <a href="#">Termos & Condições</a>
-
-            </div>
-            <div class="col">
-                <h4>Contatos</h4>
-                <a href="#">Nosso contato</a>
-                <a href="#">Politica Privacidade</a>
-                <a href="#">Termos & Condições</a>
-
-            </div>
-    </footer>
+  
 </body>
 <script src="script.js"></script>
 </html>
