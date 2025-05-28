@@ -19,7 +19,7 @@
 
         <ul class="links">
             <li class="li"><a href="index.php">Página Inicial</a></li>
-            <li class="li"><a href="consultas_atual.html"> Consultas</a></li>
+            <li class="li"><a href="consultas_atual.php"> Consultas</a></li>
             <li class="li"><a href="#">Sobre Nós</a></li>  
         </ul>
       
