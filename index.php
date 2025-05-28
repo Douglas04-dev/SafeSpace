@@ -56,39 +56,6 @@ Aqui você encontrará um ambiente seguro, acolhedor e feito especialmente para 
         </div>
 
     </header>
-
-   <section id="tu" class="container">
-    <h2 class="header">Profissionais</h2>
-    <div class="features">
-        
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Maria Silva</h4>
-            <p>Psicóloga</p>
-            <button class="btn">Pesquisar</button>
-        </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>João Souza</h4>
-            <p>Terapeuta Comportamental</p>
-              <button class="btn">Pesquisar</button>
-        </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Letícia Moraes</h4>
-            <p>Pedagoga</p>
-        <button class="btn">Pesquisar</button>            
-        </div>
-        <div class="profile-card">
-            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional">
-            <h4>Lucas Lima</h4>
-            <p>Coach Educacional</p>
-            <button class="btn">Pesquisar</button>
-        </div>
-        
-    </div>
-</section>
-
     <section id="tu" class="container">
         <h2 class="header">Outros Fatores</h2>
         <div class="features">
