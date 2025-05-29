@@ -18,34 +18,33 @@ include("conexao.php");
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav>
-        <div class="logo">
+        <div class=" logo">
             <a href="#">
-                <img src="Imagens/logo3.png" alt="" />
+                <img src="Imagens/logo3.png" alt="">
             </a>
         </div>
 
         <ul class="links">
-            <li><a href="index.php">Página Inicial</a></li>
-            <li><a href="consultas_atual.php">Consultas</a></li>
-            <li><a href="#">Sobre Nós</a></li>
+            <li class="li"><a href="index.php">Página Inicial</a></li>
+            <li class="li"><a href="consultas_atual.php"> Consultas</a></li>
+            <li class="li"><a href="#">Sobre Nós</a></li>  
         </ul>
+      
 
-        <div class="user-menu">
-            <img
-              src="Imagens/circle-user-solid.svg"
-              alt="Avatar do usuário"
-              class="avatar"
-              id="user-avatar"
-            />
-            <div class="dropdown" id="user-dropdown">
-                <a href="perfil.php">Meu Perfil</a>
-                <a href="#">Configurações</a>
-                <a href="logout.php">Sair</a>
-            </div>
-        </div>
+            <div class="user-menu">
+    <img src="Imagens/circle-user-solid.svg" alt="Avatar do usuário" class="avatar" id="user-avatar">
+    <div class="dropdown" id="user-dropdown">
+        <a href="perfil.html">Meu Perfil</a>
+        <a href="#">Configurações</a>
+        <a href="logout.php">Sair</a>
+    </div>
+    
+</div>
+
+        </a>
     </nav>
+ 
 
     <!-- CONTEÚDO -->
     <section id="tu" class="container">
