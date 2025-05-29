@@ -58,3 +58,13 @@ CREATE TABLE `fotos_perfil` (
   `data_upload` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idFoto`)
 );
+
+-- Tabela de posts 
+CREATE TABLE posts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  idProfissional INT NOT NULL, 
+  conteudo TEXT NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+  FOREIGN KEY (idProfissional) 
+  REFERENCES profissionais(idProfissional)
+);
