@@ -1,14 +1,20 @@
-<?php include("conexao.php"); ?>
+<?php
+include("conexao.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaveSpace - Consultas</title>
-    <link rel="shortcut icon" href="Imagens/logo3.png">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="consultas_atual.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SaveSpace</title>
+    <link rel="shortcut icon" href="Imagens/logo3.png" />
+    <link rel="stylesheet" href="estilo.css" />
+    <link rel="stylesheet" href="consultas_atual.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"
+    />
 </head>
 <body>
 
@@ -16,7 +22,7 @@
     <nav>
         <div class="logo">
             <a href="#">
-                <img src="Imagens/logo3.png" alt="Logo">
+                <img src="Imagens/logo3.png" alt="" />
             </a>
         </div>
 
@@ -27,7 +33,12 @@
         </ul>
 
         <div class="user-menu">
-            <img src="Imagens/circle-user-solid.svg" alt="Avatar do usuário" class="avatar" id="user-avatar">
+            <img
+              src="Imagens/circle-user-solid.svg"
+              alt="Avatar do usuário"
+              class="avatar"
+              id="user-avatar"
+            />
             <div class="dropdown" id="user-dropdown">
                 <a href="perfil.php">Meu Perfil</a>
                 <a href="#">Configurações</a>
@@ -42,38 +53,31 @@
         <div class="features">
 
             <?php
-            // Consulta no banco
-            $sql = "SELECT 
-                        p.idProfissional,
-                        u.nome,
-                        p.especialidade,
-                        IFNULL(f.caminho_arquivo, 'Imagens/circle-user-solid.svg') AS foto,
-                        IFNULL(b.texto, '') AS bio
-                    FROM profissionais p
-                    JOIN usuarios u ON p.idUsuario = u.idUsuarios
-                    LEFT JOIN fotos_perfil f ON f.idDono = p.idProfissional AND f.tipo_dono = 'profissional'
-                    LEFT JOIN bio_profissional b ON b.idProfissional = p.idProfissional";
+            $sql = "SELECT idProfissional, nome, especialidade FROM profissionais";
 
             $result = $conn->query($sql);
 
-            // Exibir os profissionais
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="profile-card">
-                        <img src="'.$row["foto"].'" alt="Foto do profissional">
-                        <h4>'.htmlspecialchars($row["nome"]).'</h4>
-                        <p>'.htmlspecialchars($row["especialidade"]).'</p>
-                        <a href="perfil_profissional.php?id='.$row["idProfissional"].'">
-                            <button class="btn">Pesquisar</button>
-                        </a>
-                    </div>';
+            if ($result) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '
+                        <div class="profile-card">
+                            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional" />
+                            <h4>' . htmlspecialchars($row["nome"]) . '</h4>
+                            <p>' . htmlspecialchars($row["especialidade"]) . '</p>
+                            <a href="perfil_profissional.php?id=' . $row["idProfissional"] . '">
+                                <button class="btn">Pesquisar</button>
+                            </a>
+                        </div>';
+                    }
+                } else {
+                    echo "<p>Nenhum profissional encontrado.</p>";
                 }
             } else {
-                echo "<p>Nenhum profissional encontrado.</p>";
+                echo "<p>Erro na consulta: " . $conn->error . "</p>";
             }
-
             ?>
+
         </div>
     </section>
 
@@ -81,7 +85,7 @@
     <footer id="con" class="container">
         <div class="column">
             <div class="log">
-                <img src="Imagens/logo3.png" alt="Logo">
+                <img src="Imagens/logo3.png" alt="" />
                 <div class="so">
                     <a href="#"><i class="ri-youtube-line"></i></a>
                     <a href="#"><i class="ri-instagram-line"></i></a>

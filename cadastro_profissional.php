@@ -1,42 +1,99 @@
-<?php
-// Conexão com o banco de dados (ajuste os dados abaixo)
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$banco = "safespace";
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro Profissional</title>
+  <link rel="stylesheet" href="estilo3.css">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="cadastro_profissional.php" method="post" onsubmit="return validarFormulario()">
+      <h1>Cadastro Profissional</h1>
 
-$conn = new mysqli($host, $usuario, $senha, $banco);
+      <div class="input-box">
+        <input type="text" name="nome" placeholder="Nome completo" required>
+      </div>
 
-// Verifica conexão
-if ($conn->connect_error) {
-  die("Erro na conexão: " . $conn->connect_error);
-}
+      <div class="input-box">
+        <input type="email" name="email" placeholder="E-mail" required>
+      </div>
 
-// Verifica se o formulário foi enviado via POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Recebe os dados do formulário
-  $nome = trim($_POST["nome"]);
-  $email = trim($_POST["email"]);
-  $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
-  $crp = trim($_POST["crp"]);
-  $cpf = trim($_POST["cpf"]);
-  $data_nascimento = $_POST["data_nascimento"];
-  $especialidade = trim($_POST["especialidade"]);
-  $agenda_google = trim($_POST["agenda_google"]);
+      <div class="input-box">
+        <input type="password" name="senha" placeholder="Senha" required>
+      </div>
 
-  // Prepara e executa a query
-  $stmt = $conn->prepare("INSERT INTO profissionais (nome, email, senha, crp, cpf, data_nascimento, especialidade, agenda_google) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param("ssssssss", $nome, $email, $senha, $crp, $cpf, $data_nascimento, $especialidade, $agenda_google);
+      <div class="input-box">
+        <input type="text" name="crp" id="crp" placeholder="CRP (ex: 06/12345)" required>
+      </div>
 
-  if ($stmt->execute()) {
-    echo "<h2>Cadastro realizado com sucesso!</h2>";
-    echo "<a href='login.html'>Ir para o login</a>";
-  } else {
-    echo "Erro ao cadastrar: " . $stmt->error;
-  }
+      <div class="input-box">
+        <input type="text" name="cpf" id="cpf" placeholder="CPF (somente números)" required>
+      </div>
 
-  $stmt->close();
-}
+      <div class="input-box">
+        <input type="date" name="data_nascimento" required>
+      </div>
 
-$conn->close();
-?>
+      <div class="input-box">
+        <input type="text" name="especialidade" placeholder="Especialidade">
+      </div>
+
+      <div class="input-box">
+        <input type="url" name="agenda_google" id="agenda_google" placeholder="Link da Agenda do Google" required>
+      </div>
+
+      <button type="submit" class="btn">Cadastrar</button>
+
+      <div class="registro">
+        <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      const crp = document.getElementById("crp").value.trim();
+      const cpf = document.getElementById("cpf").value.trim();
+      const agenda = document.getElementById("agenda_google").value.trim();
+
+      // Validar CRP: formato 00/00000
+      if (!/^\d{2}\/\d{4,5}$/.test(crp)) {
+        alert("CRP inválido. Use o formato 00/00000.");
+        return false;
+      }
+
+      // Validar CPF
+      if (!validarCPF(cpf)) {
+        alert("CPF inválido.");
+        return false;
+      }
+
+      // Validar link da agenda
+      if (!agenda.startsWith("https://calendar.google.com")) {
+        alert("O link da agenda deve ser do Google Agenda (https://calendar.google.com)");
+        return false;
+      }
+
+      return true;
+    }
+
+    function validarCPF(cpf) {
+      cpf = cpf.replace(/[^\d]+/g, '');
+      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+      let soma = 0;
+      for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
+      let resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf.charAt(9))) return false;
+
+      soma = 0;
+      for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      return resto === parseInt(cpf.charAt(10));
+    }
+  </script>
+</body>
+</html>
