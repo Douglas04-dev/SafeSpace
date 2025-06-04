@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `safespace`;
 USE `safespace`;
 
-DROP TABLE IF EXISTS `usuarios`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
@@ -34,20 +34,17 @@ UNLOCK TABLES;
 
 CREATE TABLE `profissionais` (
   `idProfissional` int(11) NOT NULL AUTO_INCREMENT,
-
   `cpf` char(11) NOT NULL,
-    `nome` char(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
   `crp` varchar(20) NOT NULL,
   `especialidade` varchar(100) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   PRIMARY KEY (`idProfissional`),
   UNIQUE KEY `cpf_UNIQUE` (`cpf`),
-  UNIQUE KEY `crp_UNIQUE` (`crp`),
-  KEY `fk_usuario_idx` (`idUsuario`),
-  CONSTRAINT `fk_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE CASCADE
+  UNIQUE KEY `crp_UNIQUE` (`crp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 
 CREATE TABLE `fotos_perfil` (
@@ -68,3 +65,8 @@ CREATE TABLE posts (
   FOREIGN KEY (idProfissional) 
   REFERENCES profissionais(idProfissional)
 );
+
+SELECT * FROM usuarios;
+
+
+select* from usarios;
