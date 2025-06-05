@@ -1,99 +1,53 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro Profissional</title>
-  <link rel="stylesheet" href="estilo3.css">
-</head>
-<body>
-  <div class="wrapper">
-    <form action="cadastro_profissional.php" method="post" onsubmit="return validarFormulario()">
-      <h1>Cadastro Profissional</h1>
+<?php
+// Inclui parâmetros de conexão
+include_once "conexao.php";
 
-      <div class="input-box">
-        <input type="text" name="nome" placeholder="Nome completo" required>
-      </div>
+// Comando de conexão
+$conn = mysqli_connect($localhost, $user, $password, $banco);
 
-      <div class="input-box">
-        <input type="email" name="email" placeholder="E-mail" required>
-      </div>
+// Testa se a conexão deu certo
+if (!$conn) {
+    echo "<script>alert('Erro ao conectar com o banco de dados!');</script>";
+    header('Location: index.html');
+    exit();
+}
 
-      <div class="input-box">
-        <input type="password" name="senha" placeholder="Senha" required>
-      </div>
+// Verifica se os dados foram recebidos corretamente
+if (isset($_POST['cpf'], $_POST['nome'], $_POST['crp'])) {
+    $cpf = $_POST['cpf'];
+    $nome = $_POST['nome'];
+    $crp = $_POST['crp'];
+    $especialidade = $_POST['especialidade'] ?? null;
+    $telefone = $_POST['telefone'] ?? null;
+    $descricao = $_POST['descricao'] ?? null;
 
-      <div class="input-box">
-        <input type="text" name="crp" id="crp" placeholder="CRP (ex: 06/12345)" required>
-      </div>
+    // Escapa os valores para evitar SQL Injection
+    $cpf = mysqli_real_escape_string($conn, $cpf);
+    $nome = mysqli_real_escape_string($conn, $nome);
+    $crp = mysqli_real_escape_string($conn, $crp);
+    $especialidade = mysqli_real_escape_string($conn, $especialidade);
+    $telefone = mysqli_real_escape_string($conn, $telefone);
+    $descricao = mysqli_real_escape_string($conn, $descricao);
 
-      <div class="input-box">
-        <input type="text" name="cpf" id="cpf" placeholder="CPF (somente números)" required>
-      </div>
+    // Monta o script para a inserção de dados
+    $sql = "INSERT INTO profissionais (cpf, nome, crp, especialidade, telefone, descricao)
+            VALUES ('$cpf', '$nome', '$crp', '$especialidade', '$telefone', '$descricao')";
 
-      <div class="input-box">
-        <input type="date" name="data_nascimento" required>
-      </div>
+    // Executa o script no banco
+    $result = mysqli_query($conn, $sql);
 
-      <div class="input-box">
-        <input type="text" name="especialidade" placeholder="Especialidade">
-      </div>
-
-      <div class="input-box">
-        <input type="url" name="agenda_google" id="agenda_google" placeholder="Link da Agenda do Google" required>
-      </div>
-
-      <button type="submit" class="btn">Cadastrar</button>
-
-      <div class="registro">
-        <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
-      </div>
-    </form>
-  </div>
-
-  <script>
-    function validarFormulario() {
-      const crp = document.getElementById("crp").value.trim();
-      const cpf = document.getElementById("cpf").value.trim();
-      const agenda = document.getElementById("agenda_google").value.trim();
-
-      // Validar CRP: formato 00/00000
-      if (!/^\d{2}\/\d{4,5}$/.test(crp)) {
-        alert("CRP inválido. Use o formato 00/00000.");
-        return false;
-      }
-
-      // Validar CPF
-      if (!validarCPF(cpf)) {
-        alert("CPF inválido.");
-        return false;
-      }
-
-      // Validar link da agenda
-      if (!agenda.startsWith("https://calendar.google.com")) {
-        alert("O link da agenda deve ser do Google Agenda (https://calendar.google.com)");
-        return false;
-      }
-
-      return true;
+    // Verifica se conseguiu fazer o INSERT
+    if (!$result) {
+        echo "<script>alert('Erro ao registrar o profissional! Verifique se CPF ou CRP já estão cadastrados.');</script>";
     }
+} else {
+    echo "<script>alert('Dados obrigatórios (CPF, Nome, CRP) não informados!');</script>";
+}
 
-    function validarCPF(cpf) {
-      cpf = cpf.replace(/[^\d]+/g, '');
-      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+// Desconecta do banco
+mysqli_close($conn);
 
-      let soma = 0;
-      for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
-      let resto = (soma * 10) % 11;
-      if (resto === 10 || resto === 11) resto = 0;
-      if (resto !== parseInt(cpf.charAt(9))) return false;
-
-      soma = 0;
-      for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
-      resto = (soma * 10) % 11;
-      if (resto === 10 || resto === 11) resto = 0;
-      return resto === parseInt(cpf.charAt(10));
-    }
-  </script>
-</body>
-</html>
+// Retorna para a página de cadastro
+header('Location: index.html');
+exit();
+?>
