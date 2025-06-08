@@ -1,36 +1,13 @@
 CREATE DATABASE IF NOT EXISTS `safespace`;
 USE `safespace`;
 
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   PRIMARY KEY (`idUsuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-ALTER TABLE profissionais ADD COLUMN nome VARCHAR(50) NOT NULL AFTER idUsuario;
-
--- Dumping data for table `usuarios`
---
-
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES 
-(1,'Douglas','douglas.almeida@gmail.com','teste1@'),
-(2,'Daniel','daniel.silva@gmail.com','teste1@'),
-(3,'Gabrieli ','gabi.azeredo@gmail.com','teste1@'),
-(4,'Neusa','neusa@gmail.com','teste1@');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profissionais`
---
-
+);
 
 CREATE TABLE `profissionais` (
   `idProfissional` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,10 +17,11 @@ CREATE TABLE `profissionais` (
   `especialidade` varchar(100) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
+  `link` varchar (500) default null,
   PRIMARY KEY (`idProfissional`),
   UNIQUE KEY `cpf_UNIQUE` (`cpf`),
   UNIQUE KEY `crp_UNIQUE` (`crp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 
 
@@ -56,7 +34,7 @@ CREATE TABLE `fotos_perfil` (
   PRIMARY KEY (`idFoto`)
 );
 
--- Tabela de posts 
+
 CREATE TABLE posts (
   id INT AUTO_INCREMENT PRIMARY KEY,
   idProfissional INT NOT NULL, 
@@ -66,7 +44,8 @@ CREATE TABLE posts (
   REFERENCES profissionais(idProfissional)
 );
 
-SELECT * FROM usuarios;
 
 
-select* from usarios;
+
+
+

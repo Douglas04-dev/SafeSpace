@@ -50,32 +50,38 @@ include("conexao.php");
     <section id="tu" class="container">
         <h2 class="header">Profissionais</h2>
         <div class="features">
+<?php
+$sql = "SELECT idProfissional, nome, especialidade, link FROM profissionais";
+$result = $conn->query($sql);
 
-            <?php
-            $sql = "SELECT idProfissional, nome, especialidade FROM profissionais";
+if ($result) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '
+            <div class="profile-card">
+                <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional" />
+                <h4>' . htmlspecialchars($row["nome"]) . '</h4>
+                <p>' . htmlspecialchars($row["especialidade"]) . '</p>';
 
-            $result = $conn->query($sql);
-
-            if ($result) {
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '
-                        <div class="profile-card">
-                            <img src="Imagens/circle-user-solid.svg" alt="Foto do profissional" />
-                            <h4>' . htmlspecialchars($row["nome"]) . '</h4>
-                            <p>' . htmlspecialchars($row["especialidade"]) . '</p>
-                            <a href="perfil_profissional.php?id=' . $row["idProfissional"] . '">
-                                <button class="btn">Pesquisar</button>
-                            </a>
-                        </div>';
-                    }
-                } else {
-                    echo "<p>Nenhum profissional encontrado.</p>";
-                }
+            // Verifica se há link disponível
+            if (!empty($row["link"])) {
+                echo '<a href="' . htmlspecialchars($row["link"]) . '" target="_blank">
+                        <button class="btn">Pesquisar</button>
+                      </a>';
             } else {
-                echo "<p>Erro na consulta: " . $conn->error . "</p>";
+                echo '<button class="btn" disabled>Sem link</button>';
             }
-            ?>
+
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum profissional encontrado.</p>";
+    }
+} else {
+    echo "<p>Erro na consulta: " . $conn->error . "</p>";
+}
+?>
+
 
         </div>
     </section>

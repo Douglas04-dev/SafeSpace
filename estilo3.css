@@ -75,6 +75,7 @@ body{
     margin: -15px 0 15px;
 }
 
+
 .relembrar label input {
     accent-color: #fff;
     margin-right: 3px;
@@ -118,4 +119,11 @@ body{
 .registro p a:hover{
     text-decoration: underline;
 }
+
+.registro{
+
+margin-top: 10px;
+
+}
+
 
