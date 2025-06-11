@@ -14,6 +14,7 @@ CREATE TABLE `profissionais` (
   `cpf` char(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `crp` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `especialidade` varchar(100) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
