@@ -307,11 +307,8 @@ footer .col a:hover {
 }
 
 /* Estilo exclusivo para a página de créditos */
-.pagina-creditos {
-  color: #333;
-  font-family: Arial, sans-serif;
-  padding: 40px 20px;
-}
+
+
 
 .pagina-creditos .conteudo-creditos {
   display: flex;
@@ -319,21 +316,25 @@ footer .col a:hover {
 }
 
 .pagina-creditos .container-creditos {
-  max-width: 800px;
-  background: #2CE3B7B2;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 4rem auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(44, 227, 183, 0.2);
 }
 
 .pagina-creditos h1 {
-  color: #004aad;
+  color: white;
   text-align: center;
 }
 
 .pagina-creditos h2 {
   margin-top: 30px;
-  color: #222;
+  color: white;
 }
 
 .pagina-creditos ul {
@@ -344,7 +345,9 @@ footer .col a:hover {
 .pagina-creditos blockquote {
   margin-top: 30px;
   font-style: italic;
-  color: #555;
-  border-left: 4px solid #004aad;
+  color: white;
+  border-left: 4px solid #2CE3B7B2;
   padding-left: 15px;
 }
+
+
