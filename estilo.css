@@ -352,11 +352,11 @@ footer .col a:hover {
 }
 
 .pagina-creditos blockquote {
-  margin-top: 30px;
   font-style: italic;
-  color: white;
-  border-left: 4px solid #2CE3B7B2;
+  color: #c0c0c0;
+  border-left: 4px solid #00bfa6;
   padding-left: 15px;
+  margin-top: 30px;
 }
 
 .titulo-secundario {
@@ -394,3 +394,6 @@ footer .col a:hover {
   margin-right: 8px;
 }
 
+.links li {
+  display: inline-block;
+}
