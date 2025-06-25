@@ -38,14 +38,13 @@ CREATE TABLE `fotos_perfil` (
 
 CREATE TABLE posts (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  idProfissional INT NOT NULL, 
+  id_usuario INT NOT NULL,
   conteudo TEXT NOT NULL,
-  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-  FOREIGN KEY (idProfissional) 
-  REFERENCES profissionais(idProfissional)
+  data_post DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(idUsuarios)
 );
 
-
+ALTER TABLE posts ADD COLUMN titulo VARCHAR(100) DEFAULT NULL;
 
 
 

@@ -21,6 +21,7 @@
             <li class="li"><a href="index.php">Página Inicial</a></li>
             <li class="li"><a href="consultas_atual.php"> Consultas</a></li>
             <li class="li"><a href="#">Sobre Nós</a></li>  
+            <li class="li"><a href="feed.php">Feed</a></li>  
         </ul>
       
 

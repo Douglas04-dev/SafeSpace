@@ -1,86 +1,73 @@
 <?php
-// feed.php – página principal do feed
 session_start();
-require_once 'sessao.php'; // já redireciona caso não logado
-?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feed • Safespace</title>
-  <link rel="stylesheet" href="css/feed.css">
-</head>
-<body>
+include('conexao.php');
 
-<main class="feed-container">
-  <!-- Formulário (mostrado apenas para profissionais via JS) -->
-  <section id="novoPost" class="card" style="display:none;">
-    <form id="postForm">
-      <textarea name="conteudo" placeholder="Escreva algo…" required></textarea>
-      <button type="submit">Publicar</button>
-    </form>
-  </section>
-
-  <!-- Timeline -->
-  <section id="timeline"></section>
-</main>
-
-<script>
-// Função para verificar se o usuário é profissional
-fetch('feed_api.php', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ _ping: true }) // Envia uma requisição vazia para saber se o usuário é profissional
-})
-  .then(r => r.status === 403 ? false : true) // Se a resposta for 403, significa que o usuário não é profissional
-  .then(isProf => {
-    if (isProf) {
-      // Exibe o formulário de postagem para profissionais
-      document.getElementById('novoPost').style.display = 'block';
-    }
-  });
-
-// Função para carregar a timeline
-async function carregar() {
-  const res = await fetch('feed_api.php'); // Faz a requisição GET para carregar os posts
-  const posts = await res.json(); // Recebe os posts em formato JSON
-  const html = posts.map(p => `
-    <article class="card post">
-      <header><strong>${p.autor}</strong><small>${p.data}</small></header>
-      <p>${p.conteudo.replace(/\n/g, '<br>')}</p>
-    </article>`).join('');
-  document.getElementById('timeline').innerHTML = html || '<p>Nenhuma publicação.</p>';
+if (!isset($_SESSION['idusuario'])) {
+    header('Location: index.html');
+    exit;
 }
 
-// Carrega a timeline quando a página é carregada
-carregar();
+$id_usuario = $_SESSION['idusuario'];
 
-// Função para publicar novo post
-document.getElementById('postForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const conteudo = e.target.conteudo.value.trim(); // Pega o conteúdo do post
-  if (!conteudo) return; // Se não houver conteúdo, não faz nada
+// Se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $conteudo = trim($_POST['conteudo']);
+    if (!empty($conteudo)) {
+        $stmt = $conn->prepare("INSERT INTO posts (id_usuario, conteudo) VALUES (?, ?)");
+        $stmt->bind_param("is", $id_usuario, $conteudo);
+        $stmt->execute();
+        $stmt->close();
+        echo "<p style='color:lime;'>Post publicado com sucesso!</p>";
+    } else {
+        echo "<p style='color:red;'>Escreva algo antes de publicar.</p>";
+    }
+}
 
-  // Envia a requisição POST para criar um novo post
-  const res = await fetch('feed_api.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ conteudo })
-  });
+// Busca as publicações
+$sql = "SELECT p.conteudo, p.data_post, u.nome 
+        FROM posts p
+        JOIN usuarios u ON p.id_usuario = u.idUsuarios
+        ORDER BY p.data_post DESC";
+$result = $conn->query($sql);
+?>
 
-  const data = await res.json();
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed - SafeSpace</title>
+  <link rel="stylesheet" href="feed.css">
+</head>
+<body class="pagina-feed">
 
-  if (res.status === 200) {
-    // Se a resposta for sucesso, recarrega os posts
-    e.target.reset();
-    carregar();
-  } else {
-    // Exibe a mensagem de erro se não for bem-sucedido
-    alert(data.erro || "Erro ao publicar.");
-  }
-});
-</script>
+<div class="feed-container">
+  <h2 style="color:#4caf50;">Nova Publicação</h2>
+  <form action="feed.php" method="POST">
+    <textarea name="conteudo" rows="4" cols="50" placeholder="O que você está pensando?" required></textarea><br>
+    <input type="submit" value="Publicar">
+  </form>
+
+  <hr>
+
+  <h2 style="color:#4caf50;">Últimas Publicações</h2>
+
+  <?php
+  if ($result && $result->num_rows > 0):
+    while ($row = $result->fetch_assoc()):
+  ?>
+    <div class="post">
+      <h3><?php echo htmlspecialchars($row['nome']); ?></h3>
+      <p><?php echo nl2br(htmlspecialchars($row['conteudo'])); ?></p>
+      <small><?php echo date('d/m/Y H:i', strtotime($row['data_post'])); ?></small>
+    </div>
+  <?php
+    endwhile;
+  else:
+    echo "<p>Nenhuma publicação encontrada.</p>";
+  endif;
+  ?>
+
+</div>
 
 </body>
 </html>
