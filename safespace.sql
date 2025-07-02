@@ -35,6 +35,8 @@ CREATE TABLE `fotos_perfil` (
   PRIMARY KEY (`idFoto`)
 );
 
+select*from usuarios;
+select*from profissionais;
 
 CREATE TABLE posts (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,6 +48,6 @@ CREATE TABLE posts (
 
 ALTER TABLE posts ADD COLUMN titulo VARCHAR(100) DEFAULT NULL;
 
-
+alter table profissionais add column senha varchar(150) not null;
 
 

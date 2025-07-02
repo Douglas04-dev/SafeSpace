@@ -13,13 +13,15 @@ if (isset($_POST['cpf'], $_POST['nome'], $_POST['crp'])) {
     $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
     $nome = mysqli_real_escape_string($conn, $_POST['nome']);
     $crp = mysqli_real_escape_string($conn, $_POST['crp']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $senha = mysqli_real_escape_string($conn, $_POST['senha']);
     $especialidade = mysqli_real_escape_string($conn, $_POST['especialidade'] ?? '');
     $telefone = mysqli_real_escape_string($conn, $_POST['telefone'] ?? '');
     $descricao = mysqli_real_escape_string($conn, $_POST['descricao'] ?? '');
     $link = mysqli_real_escape_string($conn, $_POST['agenda_google'] ?? '');
 
-    $sql = "INSERT INTO profissionais (cpf, nome, crp, especialidade, telefone, descricao, link)
-            VALUES ('$cpf', '$nome', '$crp', '$especialidade', '$telefone', '$descricao', '$link')";
+    $sql = "INSERT INTO profissionais (cpf, nome, crp, email, senha, especialidade, telefone, descricao, link)
+            VALUES ('$cpf', '$nome', '$crp','$email', '$senha', '$especialidade', '$telefone', '$descricao', '$link')";
 
     $result = mysqli_query($conn, $sql);
 

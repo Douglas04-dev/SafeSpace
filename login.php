@@ -33,7 +33,8 @@ if (isset($_POST['email'], $_POST['senha'])) {
         // Redireciona para o feed
         header("Location: feed.php");
         exit();
-    } else {
+    } 
+    else {
         echo "<script>alert('Usuário ou senha inválidos!'); window.location.href = 'index.html';</script>";
         exit();
     }
