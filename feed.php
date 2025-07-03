@@ -33,8 +33,38 @@ $result = $conn->query($sql);
 <meta charset="UTF-8">
 <title>Feed - SafeSpace</title>
 <link rel="stylesheet" href="feed.css">
+<link rel="stylesheet" href="estilo.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
 </head>
 <body>
+  <nav>
+        <div class=" logo">
+            <a href="#">
+                <img src="Imagens/logo3.png" alt="">
+            </a>
+        </div>
+
+        <ul class="links">
+            <li class="li"><a href="index.php">Página Inicial</a></li>
+            <li class="li"><a href="consultas_atual.php"> Consultas</a></li>
+            <li class="li"><a href="Creditos.php">Sobre Nós</a></li>  
+            <li class="li"><a href="feed.php">Feed</a></li>  
+        </ul>
+      
+
+            <div class="user-menu">
+    <img src="Imagens/circle-user-solid.svg" alt="Avatar do usuário" class="avatar" id="user-avatar">
+    <div class="dropdown" id="user-dropdown">
+        <a href="perfil.html">Meu Perfil</a>
+        <a href="#">Configurações</a>
+        <a href="logout.php">Sair</a>
+    </div>
+    
+</div>
+
+        </a>
+    </nav>
+ 
 <div class="feed-container">
   <h2>Nova Publicação</h2>
   <form action="feed.php" method="POST">
@@ -74,6 +104,55 @@ $result = $conn->query($sql);
   </div>
 </div>
 
+
+ <footer id="con" class="container">
+        <span class="blur"> </span>
+        <span class="blur"> </span>
+            <div class="column">
+                <div class="log">
+                    <img src="Imagens/logo3.png" alt="">
+                    <p>
+                 
+                    
+
+                        </p>
+                     <div class="so">
+                        <a href="#"><i  class="ri-youtube-line"></i></a>
+                         <a href="#"><i class="ri-instagram-line"></i></a>
+                        <a href="#"><i class="ri-whatsapp-line"></i></a>
+                     </div>
+                </div>
+            
+            </div>
+            <div class="col">
+                <h4>Company</h4>
+                <a href="#">Busines</a>
+                <a href="#">Patrocínios</a>
+                <a href="#">Network</a>
+
+            </div>
+
+            <div class="col">
+                <h4>Sobre Nós</h4>
+                <a href="#">Blogs</a>
+                <a href="#">Canal</a>
+                <a href="#">Portfólio</a>
+
+            </div>
+            <div class="col">
+                <h4>Contatos</h4>
+                <a href="#">Nosso contato</a>
+                <a href="#">Politica Privacidade</a>
+                <a href="#">Termos & Condições</a>
+
+            </div>
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="script.js"></script>
+<script src="movimentacao.js"></script>
+
 <script>
 function abrirModal(id, titulo, conteudo) {
   document.getElementById('edit-id').value = id;
@@ -89,6 +168,8 @@ window.onclick = function(event) {
     fecharModal();
   }
 }
+
+
 </script>
 </body>
 </html>
